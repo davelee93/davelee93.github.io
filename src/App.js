@@ -2,7 +2,7 @@ import React from "react";
 import avatar from "./avatar.png";
 
 const leftData = [
-  { avatar, name: "LE TAT THANH", data: "MANUAL TESTER" },
+  { avatar, name: "LE TAT THANH", data: [{ subTitle: "MANUAL TESTER" }] },
   {
     data: [
       "DOB: 18/04/1993",
@@ -154,21 +154,28 @@ const Section = ({ data: { title: titleProp, avatar, name, data }, left }) => {
     left ? "text-white" : "text-slate-800"
   } ${title === "ACTIVITIES" ? "print:mt-8" : ""}`;
 
+  const renderData = (
+    <>
+      {data && typeof data === "string" && <Item data={data} left={left} />}
+      {data &&
+        Array.isArray(data) &&
+        data.map((item, index) => <Item data={item} key={index} left={left} />)}
+    </>
+  );
+
   if (avatar && name)
     return (
-      <div className={`text-center ${titleClassName} ${className}`}>
+      <div className={`text-center ${className}`}>
         <img className="inline w-24 rounded" src={avatar} />
-        <div className="mt-4 font-bold">{name}</div>
+        <div className={`mt-4 ${titleClassName}`}>{name}</div>
+        {renderData}
       </div>
     );
 
   return (
     <div className={`${leftClassName} ${className}`}>
       {!!title && <div className={`${titleClassName}`}>{title}</div>}
-      {data && typeof data === "string" && <Item data={data} left={left} />}
-      {data &&
-        Array.isArray(data) &&
-        data.map((item, index) => <Item data={item} key={index} left={left} />)}
+      {renderData}
     </div>
   );
 };
@@ -183,7 +190,7 @@ function App() {
               <Section key={index} data={section} left={true} />
             ))}
           </div>
-          <div className="min-h-[100vh] max-w-[65%] py-4 text-slate-700 md:flex-[2_1_0%] lg:flex-[3_1_0%]">
+          <div className="min-h-[100vh] py-4 text-slate-700 md:max-w-[65%] md:flex-[2_1_0%] lg:flex-[3_1_0%]">
             {rightData.map((section, index) => (
               <Section key={index} data={section} />
             ))}

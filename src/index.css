@@ -784,6 +784,10 @@ body {
 }
 
 @media (min-width: 768px){
+  .md\:max-w-\[65\%\]{
+    max-width: 65%;
+  }
+
   .md\:flex-\[2_1_0\%\]{
     flex: 2 1 0%;
   }
