@@ -1,0 +1,8 @@
+{
+  "short_name": "Le Tat Thanh portfolio",
+  "name": "Le Tat Thanh portfolio",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
