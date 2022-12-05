@@ -176,14 +176,14 @@ const Section = ({ data: { title: titleProp, avatar, name, data }, left }) => {
 function App() {
   return (
     <div className="relative">
-      <div className="container mx-auto text-base print:max-w-[960px]">
+      <div className="container  mx-auto text-base xl:max-w-[1280px] 2xl:max-w-[1280px] print:max-w-[960px]">
         <div className="flex flex-col md:flex-row print:flex-row">
           <div className="min-h-[100vh] min-w-[320px] flex-[1_1_0%] bg-cyan-800 py-4 text-slate-100 print:bg-cyan-800">
             {leftData.map((section, index) => (
               <Section key={index} data={section} left={true} />
             ))}
           </div>
-          <div className="min-h-[100vh] py-4 text-slate-700 md:flex-[2_1_0%] lg:flex-[3_1_0%]">
+          <div className="min-h-[100vh] max-w-[65%] py-4 text-slate-700 md:flex-[2_1_0%] lg:flex-[3_1_0%]">
             {rightData.map((section, index) => (
               <Section key={index} data={section} />
             ))}
